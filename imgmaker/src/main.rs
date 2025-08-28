@@ -439,7 +439,7 @@ fn make_akai_image(in_img_filename: &Path, in_part_filename: &Path, out_img_file
     while remaining > 0 {
         let to_read = std::cmp::min(copy_buffer.len() as u64, remaining) as usize;
         temp_file.read_exact(&mut copy_buffer[..to_read])?;
-        out_img_writer.write_all(&mut copy_buffer[..to_read])?;
+        out_img_writer.write_all(&copy_buffer[..to_read])?;
         remaining -= to_read as u64;
     }
 
