@@ -1,0 +1,11 @@
+# Rust artifacts
+/target/
+Cargo.lock
+
+# Build artifacts  
+mpcimg2
+mpcimg2-c
+
+# Temporary files
+*.tmp.xz
+*.tmp

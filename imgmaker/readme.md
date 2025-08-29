@@ -31,8 +31,28 @@ Usage is :
 # mpcimg2 : image maker from MPC and Force V3.4
 
 The image structure is not the same than previous firmware versions.
-This is a C binary tool for Linux and WIN32/WIN64.
+This is now a **Rust** binary tool (rewritten from C) for Linux and cross-platform compatibility.
 
+**Note**: The original C version has been rewritten to Rust for better memory safety, cross-platform compatibility, and modern tooling. The functionality and CLI interface remain identical.
+
+## Building
+
+To build the Rust version:
+```bash
+make          # Builds Rust version by default
+```
+
+To build the original C version (if dependencies are available):
+```bash  
+make mpcimg2-c
+```
+
+To build manually with Cargo:
+```bash
+cargo build --release
+```
+
+## Usage
 
         AKAI MPC IMAGE TOOL - V2 - NEW MPC IMG FORMAT (FROM V3.4)
         https://github.com/TheKikGen/MPC-LiveXplore
