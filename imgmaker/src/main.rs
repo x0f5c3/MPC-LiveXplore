@@ -446,8 +446,7 @@ fn make_akai_image(in_img_filename: &Path, in_part_filename: &Path, out_img_file
     // Clean up temp file
     let _ = std::fs::remove_file(temp_path);
 
-    // Write EOF padding and marker
-    let current_pos = out_img_writer.stream_position()?;
+    let current_pos = out_img_writer.seek(SeekFrom::Current(0))?;
     let padding_needed = (8 - (current_pos % 8)) % 8;
     if padding_needed > 0 {
         let zero_pad = vec![0u8; padding_needed as usize];
