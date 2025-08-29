@@ -265,12 +265,17 @@ fn display_akai_image_info(filename: &Path, extract_temp: bool) -> Result<AkaiIm
 
     // Read USB IDs
     let usb_device_count = file.read_u32::<LittleEndian>()?;
+    if device_count != usb_device_count {
+        return Err(anyhow!(
+            "Mismatch between device count ({}) and USB device count ({})",
+            device_count,
+            usb_device_count
+        ));
+    }
     for i in 0..usb_device_count {
         let usb_id = file.read_u32::<LittleEndian>()?;
         print!("0x{:08x}, ", usb_id);
-        if (i as usize) < devices.len() {
-            devices[i as usize].usb_id = usb_id;
-        }
+        devices[i as usize].usb_id = usb_id;
     }
     println!();
 
